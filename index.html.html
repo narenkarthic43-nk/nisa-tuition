@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NISA TUITION CENTER</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f4ee;--surf:#fff;--ink:#1c2420;--mut:#5d6a63;--line:#ddd9cc;--green:#14352c;--chalk:#f2c14e;--ok:#1f7a4d;--bad:#b3392f;--okbg:#dff1e6;--badbg:#f7dcd8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101613;--surf:#18211c;--ink:#ecece4;--mut:#9aa89f;--line:#2b3830;--green:#0b221b;--chalk:#f2c14e;--ok:#6fd3a0;--bad:#f08a80;--okbg:#17382a;--badbg:#44211d}}
+:root[data-theme="dark"]{--bg:#101613;--surf:#18211c;--ink:#ecece4;--mut:#9aa89f;--line:#2b3830;--green:#0b221b;--ok:#6fd3a0;--bad:#f08a80;--okbg:#17382a;--badbg:#44211d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;margin:0;line-height:1.1}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--chalk);outline-offset:2px}
+.btn{background:var(--chalk);color:#1c2420;border:0;padding:.65rem 1.2rem;border-radius:6px;font-weight:600;cursor:pointer}
+.btn.dark{background:var(--green);color:#fff}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.sm{padding:.3rem .7rem;font-size:.9rem}
+.btn.red{background:var(--badbg);color:var(--bad)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.hide{display:none!important}
+/* site */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.brand{font:800 1.3rem "Bricolage Grotesque",sans-serif}
+.hero{background:var(--green);color:#f1efe6;padding-bottom:70px}
+.hero .nav .btn{background:transparent;border:1px solid #ffffff55;color:#fff}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);max-width:13ch;margin-top:50px;font-weight:800}
+.hero p{max-width:46ch;color:#c9d4cc;font-size:1.15rem;margin:18px 0 28px}
+.hero .chalk{border-bottom:3px dashed var(--chalk);display:inline-block;padding-bottom:4px}
+.sec{padding:60px 0}
+.sec h2{font-size:2rem;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:8px;padding:20px}
+.card h3{font-size:1.2rem;margin-bottom:6px}
+.card p{margin:0;color:var(--mut)}
+.times{width:100%;border-collapse:collapse}
+.times td,.times th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}
+footer{background:var(--green);color:#c9d4cc;padding:28px 0;font-size:.95rem}
+/* login */
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login form{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:32px;width:100%;max-width:380px}
+label{display:block;font-weight:600;font-size:.9rem;margin:14px 0 4px}
+input,select{width:100%;padding:.55rem .7rem;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+.seg#br{margin-top:16px}#br button{padding:.5rem 1.2rem;font-weight:600}
+.req{color:var(--bad);font-weight:700}
+.err{color:var(--bad);min-height:1.4em;margin:10px 0 0;font-size:.95rem}
+/* admin */
+.top{background:var(--green);color:#fff}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px;gap:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin:18px 0}
+.tabs button{background:none;border:0;padding:.7rem 1rem;cursor:pointer;color:var(--mut);font-weight:600;border-bottom:3px solid transparent;white-space:nowrap}
+.tabs button.on{color:var(--ink);border-color:var(--chalk)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.stat b{display:block;font:800 1.9rem "Bricolage Grotesque",sans-serif}
+.stat span{color:var(--mut);font-size:.9rem}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:14px}
+.bar>div{flex:1 1 150px}
+.scroll{overflow-x:auto;background:var(--surf);border:1px solid var(--line);border-radius:8px}
+table.t{width:100%;border-collapse:collapse;min-width:560px}
+.t th,.t td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+.t th{font-size:.85rem;color:var(--mut);font-weight:600}
+.pill{padding:2px 10px;border-radius:99px;font-size:.85rem;font-weight:600}
+.pill.ok{background:var(--okbg);color:var(--ok)}.pill.bad{background:var(--badbg);color:var(--bad)}
+.empty{padding:30px;text-align:center;color:var(--mut)}
+.seg button{border:1px solid var(--line);background:var(--bg);padding:.25rem .8rem;cursor:pointer}
+.seg button:first-child{border-radius:6px 0 0 6px}.seg button:last-child{border-radius:0 6px 6px 0}
+.seg button.p{background:var(--okbg);color:var(--ok);font-weight:700}.seg button.a{background:var(--badbg);color:var(--bad);font-weight:700}
+dialog{border:1px solid var(--line);border-radius:10px;background:var(--surf);color:var(--ink);width:min(440px,92vw);padding:24px}
+dialog::backdrop{background:#0008}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:.6rem 1.2rem;border-radius:6px;z-index:9}
+@media(prefers-reduced-motion:no-preference){.hero h1{animation:up .6s ease both}@keyframes up{from{opacity:0;transform:translateY(14px)}}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<!-- PUBLIC SITE -->
+<div id="site">
+<header class="hero"><div class="wrap">
+<div class="nav"><span class="brand">NISA TUITION CENTER</span><button class="btn" onclick="show('login')">Admin login</button></div>
+<h1>Small batches. <span class="chalk">Big marks.</span></h1>
+<p>Classes 6 to 12 in Maths, Science, English and Tamil, taught in batches of at most 15 students, with a progress report every month.</p>
+<a class="btn" href="#contact" style="text-decoration:none;display:inline-block">Book a free demo class</a>
+</div></header>
+<section class="sec"><div class="wrap"><h2>What we teach</h2>
+<div class="grid">
+<div class="card"><h3>Classes 6 to 8</h3><p>Strong basics in Maths, Science and English with weekly practice tests.</p></div>
+<div class="card"><h3>Classes 9 and 10</h3><p>Board exam preparation, model papers and doubt-clearing hours.</p></div>
+<div class="card"><h3>Classes 11 and 12</h3><p>Physics, Chemistry, Maths and Biology with NEET and JEE foundations.</p></div>
+</div></div></section>
+<section class="sec" style="background:var(--surf)"><div class="wrap"><h2>Batch timings</h2>
+<table class="times"><tr><th>Batch</th><th>Days</th><th>Time</th></tr>
+<tr><td>Classes 6 to 8</td><td>Mon to Fri</td><td>5:00 to 6:30 pm</td></tr>
+<tr><td>Classes 9 and 10</td><td>Mon to Sat</td><td>6:30 to 8:00 pm</td></tr>
+<tr><td>Classes 11 and 12</td><td>Sat and Sun</td><td>8:00 am to 12:00 pm</td></tr></table></div></section>
+<section class="sec" id="contact"><div class="wrap"><h2>Our two centres</h2>
+<div class="grid"><div class="card"><h3>Tiruchengode</h3><p>Main branch, Tiruchengode, Tamil Nadu<br>Phone: +91 98765 43210</p></div><div class="card"><h3>Koottapalli</h3><p>Koottapalli branch, Tamil Nadu<br>Phone: +91 98765 43211</p></div></div></div></section>
+<footer><div class="wrap">© 2026 NISA TUITION CENTER. All rights reserved.</div></footer>
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="login hide">
+<form onsubmit="return doLogin(event)">
+<h2>Admin login</h2>
+<p style="color:var(--mut);margin:6px 0 0">Sign in to manage students, attendance, fees and marks.</p>
+<label for="u">Username</label><input id="u" autocomplete="username" required>
+<label for="p">Password</label><input id="p" type="password" autocomplete="current-password" required>
+<p class="err" id="lerr" role="alert"></p>
+<button class="btn dark" style="width:100%">Sign in</button>
+<p style="text-align:center;margin:14px 0 0"><a href="#" onclick="show('site');return false" style="color:var(--mut)">Back to website</a></p>
+<p id="hint" style="color:var(--mut);font-size:.85rem;margin:14px 0 0">First login: admin / admin123. Change it in Settings after signing in.</p>
+</form></div>
+
+<!-- ADMIN -->
+<div id="app" class="hide">
+<div class="top"><div class="wrap"><b class="brand">NISA Admin</b><div><span id="sync" style="font-size:.85rem;opacity:.8;margin-right:10px"></span><button class="btn ghost sm" style="color:#fff;border-color:#ffffff55" onclick="logout()">Log out</button></div></div></div>
+<div class="wrap">
+<div class="seg" id="br" role="group" aria-label="Tuition centre"></div>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="view"></div>
+</div></div>
+
+<dialog id="dlg"><form method="dialog" id="dform" onsubmit="return false"></form></dialog>
+<div id="toast" class="toast hide" role="status"></div>
+
+<script>
+const KEY='nisa_tuition_v3', SESS='nisa_admin';
+const ADMIN={u:'admin',p:'admin123'};
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const CLASSES=['6','7','8','9','10','11','12'];
+let fBr='Tiruchengode', db={students:[],att:{},pays:[],marks:[]}, tab='dash', q='', fCls='', date=new Date().toISOString().slice(0,10), fMonth=new Date().getMonth()+'-'+new Date().getFullYear();
+let logged=false;
+function load(){try{const s=localStorage.getItem(KEY);if(s)db=JSON.parse(s)}catch(e){}}
+let store=null,shadow={},authDoc=null;
+function buildDocs(d){const o={};['Tiruchengode','Koottapalli'].forEach(b=>{const l=d.students.filter(x=>x.branch===b);if(l.length)o['students/'+b]={list:l}});
+ const g=(arr,key,pre)=>{const m={};arr.forEach(x=>(m[x[key]]=m[x[key]]||[]).push(x));Object.keys(m).forEach(k=>o[pre+'/'+k]={list:m[k]})};
+ g(d.pays,'month','pays');g(d.marks,'test','marks');Object.keys(d.att).forEach(k=>{if(Object.keys(d.att[k]).length)o['att/'+k]={map:d.att[k]}});if(d.prefs)o['settings/prefs']=d.prefs;return o}
+function refreshSync(){const e=document.querySelector('#sync');if(e)e.textContent=store?'Cloud database':'This device only'}
+function setSync(t){const e=document.querySelector('#sync');if(e){e.textContent=t;setTimeout(refreshSync,2500)}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}
+ if(!store)return;const next=buildDocs(db),jobs=[];
+ Object.keys(next).forEach(p=>{const j=JSON.stringify(next[p]);if(shadow[p]!==j){shadow[p]=j;jobs.push(store.doc(p).set(next[p]))}});
+ Object.keys(shadow).forEach(p=>{if(!(p in next)){delete shadow[p];jobs.push(store.doc(p).delete())}});
+ if(jobs.length)Promise.all(jobs).then(()=>setSync('Saved to database')).catch(()=>setSync('Could not save to the database'))}
+async function initStore(){
+ try{store=window.claude?await claude.use('db'):null}catch(e){store=null}
+ if(!store)return;
+ try{const out={students:[],att:{},pays:[],marks:[]};
+  for(const c of ['students','pays','marks','att','settings']){const snap=await store.collection(c).get();snap.docs.forEach(d=>{const v=d.data()||{};if(c==='students')out.students.push(...(v.list||[]));else if(c==='pays')out.pays.push(...(v.list||[]));else if(c==='marks')out.marks.push(...(v.list||[]));else if(c==='att')out.att[d.id]=v.map||{};else if(d.id==='auth')authDoc=v;else if(d.id==='prefs')out.prefs=v})}
+  const has=out.students.length||out.pays.length||out.marks.length||Object.keys(out.att).length;
+  shadow={};
+  if(has){db=out;const docs=buildDocs(db);Object.keys(docs).forEach(p=>shadow[p]=JSON.stringify(docs[p]))}else save();
+  if(!authDoc){const la=localAuth();if(la){authDoc=la;store.doc('settings/auth').set(la).catch(()=>{})}}
+ }catch(e){store=null}}
+const localAuth=()=>{try{return JSON.parse(localStorage.getItem('nisa_auth'))}catch(e){return null}};
+const getAuth=()=>authDoc||localAuth();
+async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function checkLogin(u,p){const a=getAuth();if(!a)return u===ADMIN.u&&p===ADMIN.p;return u===a.user&&await sha(a.salt+p)===a.hash}
+async function setAuth(u,p){const salt=String(Math.random()).slice(2)+Date.now(),a={user:u,salt,hash:await sha(salt+p)};authDoc=a;try{localStorage.setItem('nisa_auth',JSON.stringify(a))}catch(e){}
+ if(store){try{await store.doc('settings/auth').set(a)}catch(e){toast('Saved here, but not to the database')}}}
+async function changeLogin(){const a=getAuth(),e=$('#serr'),cur=$('#cp').value,nu=$('#nu').value.trim(),np=$('#np').value,cf=$('#cf').value;
+ if(!await checkLogin(a?a.user:ADMIN.u,cur)){e.textContent='Current password is wrong.';return}
+ if(nu.length<3){e.textContent='Username must be at least 3 characters.';return}
+ if(np.length<6){e.textContent='New password must be at least 6 characters.';return}
+ if(np!==cf){e.textContent='New password and confirm password do not match.';return}
+ await setAuth(nu,np);render();toast('Username and password changed')}
+async function backup(){await saveFile('nisa-backup-'+new Date().toISOString().slice(0,10)+'.json',new Blob([JSON.stringify({app:'nisa',db})],{type:'application/json'}))}
+async function restore(f){if(!f)return;try{const j=JSON.parse(await f.text()),d=j.db||j;if(!Array.isArray(d.students))throw 0;if(!confirm('Replace all current data with this backup?'))return;db={students:d.students||[],att:d.att||{},pays:d.pays||[],marks:d.marks||[],prefs:d.prefs||db.prefs};save();render();toast('Backup restored')}catch(e){toast('This file is not a valid backup')}}
+function resetAll(){if(prompt('This deletes every student, payment, attendance and marks record. Type DELETE to confirm.')!=='DELETE')return;db={students:[],att:{},pays:[],marks:[],prefs:db.prefs};save();render();toast('All data deleted')}
+function settingsTab(){const a=getAuth(),un=a?a.user:ADMIN.u;
+ return `<div class="grid"><div class="card"><h3>Change username and password</h3><p>Current username: <b>${esc(un)}</b></p><label>Current password</label><input id="cp" type="password" autocomplete="current-password"><label>New username</label><input id="nu" value="${esc(un)}" autocomplete="username"><label>New password</label><input id="np" type="password" autocomplete="new-password"><label>Confirm new password</label><input id="cf" type="password" autocomplete="new-password"><p class="err" id="serr" role="alert"></p><button class="btn dark" onclick="changeLogin()">Save new login</button></div>
+ <div class="card"><h3>Database</h3><p>${store?'Connected. Your data is saved in the cloud database and is the same on every device you sign in from.':'Not connected. Data is saved on this device only.'}</p><p>${db.students.length} students, ${db.pays.length} payments, ${db.marks.length} marks entries, ${Object.keys(db.att).length} attendance days.</p><div style="display:grid;gap:8px"><button class="btn" onclick="backup()">Download backup file</button><label class="btn ghost" style="text-align:center;margin:0;cursor:pointer">Restore from backup file<input type="file" accept=".json,application/json" style="display:none" onchange="restore(this.files[0])"></label><button class="btn red" onclick="resetAll()">Delete all data</button></div></div></div>`}
+function seed(){db.students=[
+{id:1,roll:'NTC-001-26',name:'ARUN KUMAR',cls:'10',gender:'Male',branch:'Tiruchengode',joined:'2026-06-10',father:'9876500001',mother:'9876500011',fee:1500,opt:''},
+{id:2,roll:'KTC-001-26',name:'DIVYA S',cls:'9',gender:'Female',branch:'Koottapalli',joined:'2026-06-12',father:'9876500002',mother:'',fee:1200,opt:''},
+{id:3,roll:'NTC-002-26',name:'KARTHIK R',cls:'12',gender:'Male',branch:'Tiruchengode',joined:'2026-06-15',father:'9876500003',mother:'9876500013',fee:2000,opt:'Computer Science'}];}
+const $=s=>document.querySelector(s), uid=()=>Date.now()+Math.floor(Math.random()*999);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rs=n=>'₹'+Number(n).toLocaleString('en-IN');
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.remove('hide');setTimeout(()=>t.classList.add('hide'),1800)}
+function show(id){['site','login','app'].forEach(x=>$('#'+x).classList.toggle('hide',x!==id));window.scrollTo(0,0)}
+async function doLogin(e){e.preventDefault();await ready;
+ if(await checkLogin($('#u').value.trim(),$('#p').value)){logged=true;try{sessionStorage.setItem(SESS,'1')}catch(_){}$('#lerr').textContent='';enter()}else $('#lerr').textContent='Wrong username or password. Try again.';return false}
+function logout(){logged=false;try{sessionStorage.removeItem(SESS)}catch(_){}show('site')}
+function enter(){show('app');render()}
+const TABS=[['dash','Overview'],['stu','Students'],['att','Attendance'],['fee','Fees'],['mark','Marks'],['rec','Receipts'],['set','Settings']];
+function render(){refreshSync();
+ $('#br').innerHTML=BRANCHES.map(b=>`<button class="${fBr===b?'p':''}" onclick="fBr='${b}';render()">${b} (${db.students.filter(s=>s.branch===b).length})</button>`).join('');
+ $('#tabs').innerHTML=TABS.map(([k,l])=>`<button role="tab" class="${tab===k?'on':''}" onclick="tab='${k}';render()">${l}</button>`).join('');
+ $('#view').innerHTML=({dash,stu,att,fee,mark,rec,set:settingsTab})[tab]();
+}
+const clsOpts=(sel,all)=>(all?`<option value="">All classes</option>`:'')+CLASSES.map(c=>`<option ${c===sel?'selected':''} value="${c}">Class ${c}</option>`).join('');
+const monthsDue=x=>{const j=new Date(x.joined||Date.now()),n=new Date();return Math.max(0,(n.getFullYear()-j.getFullYear())*12+n.getMonth()-j.getMonth()+1)};
+const totPaid=id=>db.pays.filter(p=>p.sid===id).reduce((a,p)=>a+p.amt,0);
+const pending=x=>Math.max(0,monthsDue(x)*x.fee-totPaid(x.id));
+const absMsg=x=>'Dear Parent, '+x.name+' ('+x.roll+') was absent from tuition today, '+date+'. - NISA TUITION CENTER, '+x.branch;
+const waLink=(n,m)=>'https://wa.me/91'+String(n).replace(/\D/g,'').slice(-10)+'?text='+encodeURIComponent(m);
+const waBtn=(n,m,t,cls)=>`<a class="btn ${cls||''} sm" target="_blank" rel="noopener" href="${waLink(n,m)}" style="text-decoration:none;display:inline-block">${t}</a>`;
+const BRANCHES=['Tiruchengode','Koottapalli'];
+const visible=()=>db.students.filter(s=>(!fCls||s.cls===fCls)&&(!fBr||s.branch===fBr)&&(!q||(s.name+' '+s.roll).toLowerCase().includes(q.toLowerCase())));
+const stuName=id=>esc((db.students.find(s=>s.id===id)||{name:'(removed)'}).name);
+const monthLabel=k=>{const[m,y]=k.split('-');return MONTHS[m]+' '+y};
+const paidIn=(sid,k)=>db.pays.filter(p=>p.sid===sid&&p.month===k).reduce((a,p)=>a+p.amt,0);
+function filters(extra=''){return `<div class="bar"><div><label>Search</label><input value="${esc(q)}" oninput="q=this.value;render();this.focus()" placeholder="Name or roll number"></div><div><label>Class</label><select onchange="fCls=this.value;render()">${clsOpts(fCls,1)}</select></div>${extra}</div>`}
+function dash(){
+ const st=db.students.filter(x=>x.branch===fBr),k=fMonth,ids=st.map(x=>x.id);
+ const paid=st.filter(x=>pending(x)===0).length,col=db.pays.filter(p=>p.month===k&&ids.includes(p.sid)).reduce((a,p)=>a+p.amt,0);
+ const pr=Object.entries(db.att[date]||{}).filter(([id,v])=>v==='P'&&ids.includes(+id)).length;
+ return `<div class="stats"><div class="card stat"><b>${st.length}</b><span>Students at ${fBr}</span></div><div class="card stat"><b>${pr}</b><span>Present on ${date}</span></div><div class="card stat"><b>${rs(col)}</b><span>Collected in ${monthLabel(k)}</span></div><div class="card stat"><b>${st.length-paid}</b><span>Students with fees pending</span></div></div>
+ <div class="card"><h3>${fBr} centre</h3><p>Use the two centre buttons above to switch. Each centre has its own students, attendance, fees and marks.</p></div>`}
+function stu(){
+ const r=visible().sort((x,y)=>String(x.roll).localeCompare(String(y.roll),undefined,{numeric:true}));
+ const tbl=list=>`<div class="scroll"><table class="t" style="min-width:820px"><tr><th>Roll no.</th><th>Name</th><th>Gender</th><th>Joined</th><th>Father no.</th><th>Mother no.</th><th>Fees / month</th><th></th></tr>${list.map(s=>`<tr><td>${esc(s.roll)}</td><td>${esc(s.name)}</td><td>${esc(s.gender)}</td><td>${esc(s.joined)}</td><td>${esc(s.father)}</td><td>${esc(s.mother)||'-'}</td><td>${rs(s.fee)}</td><td><button class="btn ghost sm" onclick="stuForm(${s.id})">Edit</button> <button class="btn red sm" onclick="delStu(${s.id})">Delete</button></td></tr>`).join('')}</table></div>`;
+ let out='';
+ CLASSES.forEach(c=>{
+  const inC=r.filter(x=>x.cls===c);if(!inC.length)return;
+  out+=`<h3 style="margin:26px 0 10px">Class ${c} <span style="color:var(--mut);font-weight:500;font-size:1rem">(${inC.length} students)</span></h3>`;
+  if(CLASSES.indexOf(c)>=5){
+   [...OPTS,'Not set'].forEach(g=>{const ig=inC.filter(x=>(x.opt||'Not set')===g);if(!ig.length)return;
+    out+=`<h4 style="margin:14px 0 8px;font-size:1.05rem">Class ${c}, ${g} group <span style="color:var(--mut);font-weight:400">(${ig.length})</span></h4>`+tbl(ig)})
+  }else out+=tbl(inC)});
+ return filters(`<button class="btn" onclick="stuForm()">Add student</button>`)+(out||`<div class="scroll"><p class="empty">No students found. Select Add student to enrol the first one.</p></div>`)}
+function stuForm(id){
+ const s=db.students.find(x=>x.id===id)||{roll:'',name:'',cls:'10',gender:'Male',branch:fBr||BRANCHES[0],joined:new Date().toISOString().slice(0,10),father:'',mother:'',fee:1000,opt:''};
+ const sel=(i,arr,v)=>`<select id="${i}">${arr.map(o=>`<option ${o===v?'selected':''}>${o}</option>`).join('')}</select>`;
+ openDlg(`<h3>${id?'Edit':'Add'} student</h3><p style="color:var(--mut);margin:4px 0 0"><span class="req">*</span> means required</p><label>Tuition centre <span class="req">*</span></label><select id="fb" onchange="autoRoll(${id||0})">${BRANCHES.map(o=>`<option ${o===s.branch?'selected':''}>${o}</option>`).join('')}</select><label>Roll number (automatic) <span class="req">*</span></label><input id="fr" value="${esc(s.roll||nextRoll(s.branch,s.joined))}" readonly><label>Student name <span class="req">*</span></label><input id="fn" value="${esc(s.name)}" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()"><label>Class <span class="req">*</span></label><select id="fc">${clsOpts(s.cls)}</select><label>Gender <span class="req">*</span></label>${sel('fg',['Male','Female'],s.gender)}<label>Join date <span class="req">*</span></label><input id="fj" type="date" value="${esc(s.joined)}" onchange="autoRoll(${id||0})"><label>Father phone number <span class="req">*</span></label><input id="ff" value="${esc(s.father)}" inputmode="tel"><label>Mother phone number (optional)</label><input id="fm" value="${esc(s.mother)}" inputmode="tel"><label>Fees amount per month (₹) <span class="req">*</span></label><input id="fa" type="number" min="0" value="${s.fee}"><label>Group (Class 11 and 12)</label>${sel('fo',OPTS,s.opt||OPTS[0])}<p class="err" id="derr"></p><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn ghost" onclick="$('#dlg').close()">Cancel</button><button class="btn dark" onclick="saveStu(${id||0})">Save student</button></div>`)}
+function nextRoll(b,j){const pre=b==='Koottapalli'?'KTC':'NTC',yy=String(j||new Date().toISOString().slice(0,10)).slice(2,4);const n=db.students.filter(x=>x.branch===b&&String(x.roll).startsWith(pre+'-')&&String(x.roll).endsWith('-'+yy)).reduce((m,x)=>Math.max(m,parseInt(String(x.roll).split('-')[1])||0),0)+1;return pre+'-'+String(n).padStart(3,'0')+'-'+yy}
+function autoRoll(id){const st=db.students.find(x=>x.id===id),b=$('#fb').value,j=$('#fj').value;$('#fr').value=(st&&st.branch===b&&String(st.joined).slice(2,4)===String(j).slice(2,4))?st.roll:nextRoll(b,j)}
+function saveStu(id){
+ const o={branch:$('#fb').value,roll:$('#fr').value.trim(),name:$('#fn').value.trim().toUpperCase(),cls:$('#fc').value,gender:$('#fg').value,joined:$('#fj').value,father:$('#ff').value.trim(),mother:$('#fm').value.trim(),fee:+$('#fa').value||0,opt:$('#fo').value};
+ if(!o.name||!o.father||!o.joined||!(o.fee>0)){$('#derr').textContent='Fill all fields marked with a red star.';return}
+ if(!/^\d{10}$/.test(o.father)||(o.mother&&!/^\d{10}$/.test(o.mother))){$('#derr').textContent='Phone numbers must be 10 digits.';return}
+ if(db.students.some(x=>x.id!==id&&x.roll===o.roll&&x.branch===o.branch)){$('#derr').textContent='This roll number is already used in '+o.branch+'.';return}
+ if(id)Object.assign(db.students.find(s=>s.id===id),o);else db.students.push({id:uid(),...o});
+ save();$('#dlg').close();render();toast('Student saved')}
+function delStu(id){if(!confirm('Delete this student and all their records?'))return;db.students=db.students.filter(s=>s.id!==id);db.pays=db.pays.filter(p=>p.sid!==id);db.marks=db.marks.filter(m=>m.sid!==id);Object.values(db.att).forEach(d=>delete d[id]);save();render();toast('Student deleted')}
+function att(){
+ const r=visible(), d=db.att[date]||{};
+ const bar=`<div><label>Date</label><input type="date" value="${date}" onchange="date=this.value;render()"></div>`;
+ return absCard()+filters(bar)+`<div class="scroll"><table class="t"><tr><th>Student</th><th>Class</th><th>Status</th><th>Attendance this month</th><th>Parent message</th></tr>${r.length?r.map(s=>{const mm=date.slice(0,7),days=Object.entries(db.att).filter(([k])=>k.startsWith(mm)),pc=days.filter(([,v])=>v[s.id]==='P').length;return `<tr><td>${esc(s.name)}</td><td>${esc(s.cls)}</td><td class="seg"><button class="${d[s.id]==='P'?'p':''}" onclick="setAtt(${s.id},'P')">Present</button><button class="${d[s.id]==='A'?'a':''}" onclick="setAtt(${s.id},'A')">Absent</button></td><td>${pc} of ${days.length} days</td><td>${d[s.id]==='A'?absBtn(s,date):''}</td></tr>`}).join(''):`<tr><td colspan="5" class="empty">No students to mark. Add students first.</td></tr>`}</table></div>
+ ${r.length?`<p><button class="btn ghost sm" onclick="markAll()">Mark all present</button></p>`:''}`}
+function setAtt(id,v){(db.att[date]=db.att[date]||{})[id]=v;if(v!=='A')delete db.att[date]['s'+id];save();render();if(v==='A')toast('Marked absent. Tap Send message to inform the father.')}
+function markAll(){visible().forEach(s=>(db.att[date]=db.att[date]||{})[s.id]='P');save();render()}
+function fee(){
+ const k=fMonth, now=new Date(), mo=[];for(let i=0;i<6;i++){const d=new Date(now.getFullYear(),now.getMonth()-i,1);mo.push(d.getMonth()+'-'+d.getFullYear())}
+ const bar=`<div><label>Payments month</label><select onchange="fMonth=this.value;render()">${mo.map(m=>`<option value="${m}" ${m===k?'selected':''}>${monthLabel(m)}</option>`).join('')}</select></div><button class="btn" onclick="feePdf()">Download pending fees PDF</button>`;
+ const r=visible();let tp=0;
+ const rows=r.map(x=>{const pd=pending(x);tp+=pd;const ok=pd===0;return `<tr><td>${esc(x.name)}<br><small style="color:var(--mut)">${esc(x.roll)}</small></td><td>${esc(x.cls)}</td><td>${esc(x.joined)}</td><td>${monthsDue(x)}</td><td>${rs(monthsDue(x)*x.fee)}</td><td>${rs(totPaid(x.id))}</td><td><b>${rs(pd)}</b></td><td><span class="pill ${ok?'ok':'bad'}">${ok?'Paid':'Pending'}</span></td><td><button class="btn ghost sm" onclick="viewBill(${x.id})">View bill</button> ${ok?'':`<button class="btn sm" onclick="payForm(${x.id})">Record payment</button> ${waBtn(x.father,remMsg(x,pd),'Remind','ghost')}`}</td></tr>`}).join('');
+ return filters(bar)+`<p style="color:var(--mut)">Pending fees are counted from each student's join date to today: months since joining × monthly fees, minus everything paid. Total pending: <b>${rs(tp)}</b></p><div class="scroll"><table class="t" style="min-width:900px"><tr><th>Student</th><th>Class</th><th>Joined</th><th>Months</th><th>Total due</th><th>Paid</th><th>Pending</th><th>Status</th><th></th></tr>${rows||`<tr><td colspan="9" class="empty">No students to show.</td></tr>`}</table></div>
+ <h3 style="margin:22px 0 10px">Payments received in ${monthLabel(k)}</h3><div class="scroll"><table class="t"><tr><th>Date</th><th>Student</th><th>Amount</th><th></th></tr>${db.pays.filter(p=>p.month===k&&db.students.some(x=>x.id===p.sid&&x.branch===fBr)).map(p=>`<tr><td>${p.date}<br><small style="color:var(--mut)">${esc(p.rno||'')}</small></td><td>${stuName(p.sid)}</td><td>${rs(p.amt)}</td><td>${(()=>{const x=db.students.find(y=>y.id===p.sid);return x?waBtn(x.father,billMsg(x,p),'Send bill','ghost')+` <button class="btn ghost sm" onclick="viewRcpt(${p.id})">View receipt</button>`:''})()}</td></tr>`).join('')||`<tr><td colspan="4" class="empty">No payments recorded for this month.</td></tr>`}</table></div>`}
+const remMsg=(x,pd)=>'Dear Parent, fees pending for '+x.name+' ('+x.roll+') is Rs.'+pd+' (from '+x.joined+' to today). Please pay at the earliest. - NISA TUITION CENTER, '+x.branch;
+function payForm(sid){const s=db.students.find(x=>x.id===sid),due=pending(s);
+ openDlg(`<h3>Record payment</h3><p>${esc(s.name)}, ${monthLabel(fMonth)}</p><label>Amount (₹)</label><input id="f1" type="number" min="1" value="${due}"><p class="err" id="derr"></p><div style="display:flex;gap:8px;justify-content:flex-end"><button class="btn ghost" onclick="$('#dlg').close()">Cancel</button><button class="btn dark" onclick="savePay(${sid})">Save payment</button></div>`)}
+function rcptData(pid){const p=db.pays.find(q=>q.id===pid),x=db.students.find(y=>y.id===p.sid),due=monthsDue(x)*x.fee,paid=totPaid(x.id),bal=Math.max(0,due-paid);
+ return {p,x,rows:[['Student',x.name],['Roll no.',x.roll],['Class',x.cls+(CLASSES.indexOf(x.cls)>=5&&x.opt?' ('+x.opt+')':'')],['Fees month',monthLabel(p.month)],['Amount paid now','Rs.'+p.amt],['Total due till today','Rs.'+due],['Total paid so far','Rs.'+paid],['Balance pending','Rs.'+bal]]}}
+async function saveFile(name,data){const dl=window.claude?await claude.use('downloads'):null;if(!dl){toast('Download is not available here');return}
+ try{await dl.save({filename:name,data})}catch(e){if(!e||e.code!=='declined')toast('Could not save the file')}}
+function rcptDoc(pid){const d=rcptData(pid),doc=new jspdf.jsPDF({format:'a5'});
+ doc.setFillColor(20,53,44);doc.rect(0,0,148,28,'F');doc.setTextColor(255);doc.setFontSize(15);doc.text('NISA TUITION CENTER',10,13);doc.setFontSize(10);doc.text(d.x.branch+'  |  FEES RECEIPT',10,21);
+ doc.setTextColor(0);doc.text('Receipt no: '+(d.p.rno||'-'),10,38);doc.text('Date: '+d.p.date,138,38,{align:'right'});
+ let y=50;d.rows.forEach((r,i)=>{if(i===4)y+=4;doc.setFont('helvetica',(i===4||i===7)?'bold':'normal');doc.text(r[0],10,y);doc.text(String(r[1]),138,y,{align:'right'});doc.setDrawColor(220);doc.line(10,y+2.5,138,y+2.5);y+=9});
+ doc.setFont('helvetica','normal');doc.setFontSize(9);doc.text('Thank you. This is a computer generated receipt.',10,y+10);
+ return {doc,d}}
+async function rcptPdf(pid){if(!window.jspdf){toast('PDF tool did not load. Check your internet.');return}const{doc,d}=rcptDoc(pid);await saveFile('receipt-'+(d.p.rno||d.p.id)+'.pdf',doc.output('blob'))}
+async function shareRcpt(pid){if(!window.jspdf){toast('PDF tool did not load. Check your internet.');return}
+ const{doc,d}=rcptDoc(pid),f=new File([doc.output('blob')],'receipt-'+(d.p.rno||d.p.id)+'.pdf',{type:'application/pdf'});
+ if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title:'Fees receipt',text:'Fees receipt - NISA TUITION CENTER'});return}catch(e){if(e&&e.name==='AbortError')return}}
+ toast('File sharing is not supported here. Saving the PDF instead.');await saveFile(f.name,f)}
+function rcptImg(pid){const d=rcptData(pid),c=document.createElement('canvas');c.width=720;c.height=820;const g=c.getContext('2d');
+ g.fillStyle='#fff';g.fillRect(0,0,720,820);g.fillStyle='#14352c';g.fillRect(0,0,720,130);g.fillStyle='#fff';g.font='bold 38px sans-serif';g.fillText('NISA TUITION CENTER',40,66);g.font='24px sans-serif';g.fillText(d.x.branch+'  |  FEES RECEIPT',40,106);
+ g.fillStyle='#1c2420';g.font='22px sans-serif';g.textAlign='left';g.fillText('Receipt no: '+(d.p.rno||'-'),40,185);g.textAlign='right';g.fillText('Date: '+d.p.date,680,185);
+ let y=250;d.rows.forEach((r,i)=>{if(i===4)y+=20;g.font=((i===4||i===7)?'bold ':'')+'26px sans-serif';g.textAlign='left';g.fillText(r[0],40,y);g.textAlign='right';g.fillText(String(r[1]),680,y);g.strokeStyle='#ddd';g.beginPath();g.moveTo(40,y+16);g.lineTo(680,y+16);g.stroke();y+=62});
+ g.textAlign='left';g.fillStyle='#5d6a63';g.font='20px sans-serif';g.fillText('Thank you. This is a computer generated receipt.',40,y+30);
+ c.toBlob(b=>saveFile('receipt-'+(d.p.rno||d.p.id)+'.png',b),'image/png')}
+function monthRows(x){const n=monthsDue(x),j=new Date(x.joined),rows=[];let rem=totPaid(x.id);
+ for(let i=0;i<n;i++){const d=new Date(j.getFullYear(),j.getMonth()+i,1),pd=Math.min(x.fee,rem);rem-=pd;rows.push([MONTHS[d.getMonth()]+' '+d.getFullYear(),x.fee,pd,x.fee-pd,pd>=x.fee?'Paid':pd>0?'Partly paid':'Pending'])}return rows}
+async function billPdf(id){if(!window.jspdf){toast('PDF tool did not load. Check your internet.');return}
+ const x=db.students.find(y=>y.id===id),rows=monthRows(x),today=new Date().toISOString().slice(0,10),due=monthsDue(x)*x.fee,paid=totPaid(x.id),bal=Math.max(0,due-paid);
+ const doc=new jspdf.jsPDF();doc.setFillColor(20,53,44);doc.rect(0,0,210,30,'F');doc.setTextColor(255);doc.setFontSize(18);doc.text('NISA TUITION CENTER',14,14);doc.setFontSize(11);doc.text(x.branch+'  |  FEES BILL',14,23);
+ doc.setTextColor(0);doc.setFontSize(11);doc.text('Bill date: '+today,196,40,{align:'right'});
+ doc.text('Student: '+x.name,14,40);doc.text('Roll no.: '+x.roll,14,47);doc.text('Class: '+x.cls+(CLASSES.indexOf(x.cls)>=5&&x.opt?' ('+x.opt+')':''),14,54);
+ doc.text('Join date: '+x.joined,14,61);doc.text('Fees per month: Rs.'+x.fee,14,68);doc.text('Fees counted from join date to '+today,196,54,{align:'right'});
+ doc.autoTable({startY:76,head:[['Month','Fees (Rs.)','Paid (Rs.)','Pending (Rs.)','Status']],body:rows,foot:[['Total ('+rows.length+' months)',due,paid,bal,bal?'Pending':'Paid']],headStyles:{fillColor:[20,53,44]},footStyles:{fillColor:[235,235,235],textColor:0}});
+ const y=doc.lastAutoTable.finalY+12;doc.setFontSize(13);doc.setFont('helvetica','bold');doc.text('Balance to pay: Rs.'+bal,14,y);doc.setFont('helvetica','normal');doc.setFontSize(9);doc.text('Payments are applied to the oldest month first. This is a computer generated bill.',14,y+8);
+ await saveFile('fees-bill-'+x.roll+'-'+today+'.pdf',doc.output('blob'))}
+function rec(){const ids=db.students.filter(x=>x.branch===fBr).map(x=>x.id),l=db.pays.filter(p=>ids.includes(p.sid)).slice().reverse();
+ return `<p style="color:var(--mut)">Every fee receipt is saved here in the portal. Open one to view it or send it on WhatsApp.</p><div class="scroll"><table class="t"><tr><th>Receipt no.</th><th>Date</th><th>Student</th><th>Amount</th><th></th></tr>${l.map(p=>`<tr><td>${esc(p.rno||'-')}</td><td>${p.date}</td><td>${stuName(p.sid)}</td><td>${rs(p.amt)}</td><td><button class="btn ghost sm" onclick="viewRcpt(${p.id})">View receipt</button></td></tr>`).join('')||`<tr><td colspan="5" class="empty">No receipts yet. Record a fee payment to create one.</td></tr>`}</table></div>`}
+function receiptHtml(pid){const d=rcptData(pid);return `<div style="border:1px solid var(--line);border-radius:8px;overflow:hidden"><div style="background:var(--green);color:#fff;padding:14px"><b style="font-size:1.15rem">NISA TUITION CENTER</b><br>${esc(d.x.branch)} | FEES RECEIPT</div><div style="padding:14px"><div style="display:flex;justify-content:space-between;color:var(--mut)"><span>Receipt no: ${esc(d.p.rno||'-')}</span><span>${d.p.date}</span></div>${d.rows.map((r,i)=>`<div style="display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);${i===4||i===7?'font-weight:700':''}"><span>${r[0]}</span><span>${esc(r[1])}</span></div>`).join('')}<p style="color:var(--mut);font-size:.85rem;margin:10px 0 0">Thank you. This is a computer generated receipt.</p></div></div>`}
+function viewRcpt(pid,title){const d=rcptData(pid);
+ openDlg(`<h3 style="margin-bottom:10px">${title||'Fees receipt'}</h3>${receiptHtml(pid)}<div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px"><button class="btn ghost sm" onclick="rcptPdf(${pid})">Download PDF</button><a class="btn sm" target="_blank" rel="noopener" href="${waLink(d.x.father,billMsg(d.x,d.p))}" style="text-decoration:none">Send on WhatsApp</a><button class="btn dark sm" onclick="$('#dlg').close()">Close</button></div>`)}
+function viewBill(id){const x=db.students.find(y=>y.id===id),rows=monthRows(x),due=monthsDue(x)*x.fee,paid=totPaid(id),bal=Math.max(0,due-paid);
+ openDlg(`<h3 style="margin-bottom:6px">Fees bill</h3><p style="margin:0 0 10px;color:var(--mut)">${esc(x.name)} (${esc(x.roll)}), Class ${esc(x.cls)}<br>Joined ${esc(x.joined)}. Fees Rs.${x.fee} per month, counted up to today.</p><div style="max-height:45vh;overflow:auto;border:1px solid var(--line);border-radius:8px"><table class="t" style="min-width:0"><tr><th>Month</th><th>Fees</th><th>Paid</th><th>Pending</th></tr>${rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}<tr><td><b>Total</b></td><td><b>${due}</b></td><td><b>${paid}</b></td><td><b>${bal}</b></td></tr></table></div><p><b>Balance to pay: Rs.${bal}</b></p><div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap"><button class="btn ghost sm" onclick="billPdf(${id})">Download PDF</button>${bal?`<a class="btn sm" target="_blank" rel="noopener" href="${waLink(x.father,remMsg(x,bal))}" style="text-decoration:none">Send on WhatsApp</a>`:''}<button class="btn dark sm" onclick="$('#dlg').close()">Close</button></div>`)}
+const absentList=d=>db.students.filter(x=>x.branch===fBr&&(db.att[d]||{})[x.id]==='A');
+const isSent=(x,d)=>!!(db.att[d]||{})['s'+x.id];
+function absBtn(x,d){const sent=isSent(x,d);return `<a class="btn sm ${sent?'ghost':''}" target="_blank" rel="noopener" href="${waLink(x.father,'Dear Parent, '+x.name+' ('+x.roll+') was absent from tuition today, '+d+'. - NISA TUITION CENTER, '+x.branch)}" onclick="markSent(${x.id},'${d}')" style="text-decoration:none;display:inline-block">${sent?'Sent. Send again':'Send message'}</a>`}
+function markSent(id,d){(db.att[d]=db.att[d]||{})['s'+id]=1;save();setTimeout(render,400)}
+function setPref(k,v){db.prefs=db.prefs||{};db.prefs[k]=v;save();render();toast('Saved')}
+function absCard(){const ab=absentList(date),un=ab.filter(x=>!isSent(x,date)),pf=db.prefs||{};
+ return `<div class="card" style="margin-bottom:14px"><h3>Absent messages</h3><p>${ab.length} absent on ${date}. ${un.length} message(s) not sent yet.</p><div class="bar" style="margin-top:12px"><div style="flex:0 0 auto"><button class="btn" onclick="absentDialog('${date}')">Send absent messages (${un.length})</button></div><div><label>Reminder time</label><input type="time" value="${esc(pf.absentTime||'')}" onchange="setPref('absentTime',this.value)"></div><div style="flex:0 0 auto"><label style="display:flex;gap:6px;align-items:center;font-weight:400;margin:0"><input type="checkbox" style="width:auto" ${pf.absentRemind?'checked':''} onchange="setPref('absentRemind',this.checked)"> Remind me at this time</label></div></div><p style="color:var(--mut);font-size:.9rem;margin:0">Messages are sent only when you tap Send. At the reminder time, with this page open, a list of absent students opens so you can send each one in a tap. WhatsApp cannot send messages in the background.</p></div>`}
+function absentDialog(d){const l=absentList(d);
+ openDlg(`<h3>Absent messages, ${d}</h3>${l.length?`<p style="color:var(--mut)">Tap Send for a student. WhatsApp opens with the message typed. Tap Send there.</p><div style="display:grid;gap:8px;max-height:50vh;overflow:auto">${l.map(x=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);border-radius:6px;padding:8px 10px"><span>${esc(x.name)}<br><small style="color:var(--mut)">Class ${esc(x.cls)}</small></span>${absBtn(x,d)}</div>`).join('')}</div>`:'<p>No absent students for this date.</p>'}<div style="text-align:right;margin-top:12px"><button class="btn dark sm" onclick="$('#dlg').close();render()">Close</button></div>`)}
+function checkRemind(){if(!logged)return;const pf=db.prefs||{};if(!pf.absentRemind||!pf.absentTime)return;
+ const n=new Date(),today=n.toISOString().slice(0,10),hm=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+ if(hm<pf.absentTime)return;const k='nisa_remind_'+today;try{if(localStorage.getItem(k))return}catch(e){}
+ if(!absentList(today).some(x=>!isSent(x,today)))return;try{localStorage.setItem(k,'1')}catch(e){}absentDialog(today)}
+setInterval(checkRemind,30000);
+const billMsg=(x,p)=>{const due=monthsDue(x)*x.fee,paid=totPaid(x.id);return ['*NISA TUITION CENTER - '+x.branch+'*','*FEES RECEIPT*','Receipt no: '+(p.rno||'-'),'Date: '+p.date,'------------------------','Student: '+x.name,'Roll no: '+x.roll,'Class: '+x.cls,'Fees month: '+monthLabel(p.month),'------------------------','*Amount paid now: Rs.'+p.amt+'*','Total due till today: Rs.'+due,'Total paid so far: Rs.'+paid,'*Balance pending: Rs.'+Math.max(0,due-paid)+'*','------------------------','Thank you.'].join('\n')};
+function payDone(sid,pay){viewRcpt(pay.id,'Payment saved. Receipt '+esc(pay.rno))}
+async function feePdf(){
+ if(!window.jspdf){toast('PDF tool did not load. Check your internet.');return}
+ const r=visible().filter(x=>pending(x)>0).sort((x,y)=>String(x.roll).localeCompare(String(y.roll)));
+ if(!r.length){toast('No pending fees to list');return}
+ let td=0,tp=0,tt=0;
+ const rows=r.map((x,i)=>{const d=monthsDue(x)*x.fee,p=totPaid(x.id),pd=pending(x);td+=d;tp+=p;tt+=pd;return [i+1,x.roll,x.name,x.cls,x.joined,monthsDue(x),d,p,pd]});
+ const today=new Date().toISOString().slice(0,10);
+ const doc=new jspdf.jsPDF();doc.setFontSize(16);doc.text('NISA TUITION CENTER - '+fBr,14,16);doc.setFontSize(11);doc.text('Pending fees list as on '+today+' (join date to today)',14,24);
+ doc.autoTable({startY:30,head:[['#','Roll no.','Name','Class','Joined','Months','Due (Rs.)','Paid (Rs.)','Pending (Rs.)']],body:rows,foot:[['','','','','','Total',td,tp,tt]],styles:{fontSize:9},headStyles:{fillColor:[20,53,44]},footStyles:{fillColor:[235,235,235],textColor:0}});
+ const dl=window.claude?await claude.use('downloads'):null;
+ if(!dl){toast('PDF download is not available here');return}
+ try{await dl.save({filename:'pending-fees-'+fBr+'-'+today+'.pdf',data:doc.output('blob')})}catch(e){if(!e||e.code!=='declined')toast('Could not save the PDF')}}
+function savePay(sid){const a=+$('#f1').value;if(!(a>0)){$('#derr').textContent='Enter an amount above zero.';return}const st=db.students.find(y=>y.id===sid),cnt=db.pays.filter(q=>(db.students.find(y=>y.id===q.sid)||{}).branch===st.branch).length+1,pay={id:uid(),sid,amt:a,month:fMonth,date:new Date().toISOString().slice(0,10),rno:(st.branch==='Koottapalli'?'KTC':'NTC')+'-R'+String(cnt).padStart(4,'0')};db.pays.push(pay);save();render();payDone(sid,pay)}
+const TESTS=[['Mid-1',50],['Mid-2',50],['Quarterly',100],['Half-yearly',100],['Mid-3',50]];
+const OPTS=['Computer Science','Biology','Art & Science','Pure Science'];
+const subjectsFor=s=>CLASSES.indexOf(s.cls)>=5?['Tamil','English','Maths','Physics','Chemistry',s.opt||OPTS[0]]:['Tamil','English','Maths','Science','Social'];
+let mTest='Mid-1',mCls='10';
+function mark(){
+ const max=TESTS.find(t=>t[0]===mTest)[1], r=db.students.filter(s=>s.cls===mCls&&(!fBr||s.branch===fBr)&&(!q||s.name.toLowerCase().includes(q.toLowerCase())));
+ const subs=CLASSES.indexOf(mCls)>=5?['Tamil','English','Maths','Physics','Chemistry','Optional']:['Tamil','English','Maths','Science','Social'];
+ const bar=`<div><label>Search</label><input value="${esc(q)}" oninput="q=this.value;render();this.focus()" placeholder="Student name"></div><div><label>Class</label><select onchange="mCls=this.value;render()">${clsOpts(mCls)}</select></div><div><label>Test</label><select onchange="mTest=this.value;render()">${TESTS.map(t=>`<option value="${t[0]}" ${t[0]===mTest?'selected':''}>${t[0]} (out of ${t[1]})</option>`).join('')}</select></div>`;
+ const get=(sid,sub)=>db.marks.find(m=>m.sid===sid&&m.test===mTest&&m.subject===sub);
+ const row=s=>{const ss=subjectsFor(s);let tot=0,n=0;const cells=ss.map(sub=>{const m=get(s.id,sub);if(m){tot+=m.score;n++}return `<td><input type="number" min="0" max="${max}" aria-label="${esc(s.name)} ${esc(sub)}" style="width:72px" value="${m?m.score:''}" onchange="setMark(${s.id},'${sub.replace(/'/g,"")}',this.value,${max})"></td>`}).join('');
+  return `<tr><td>${esc(s.name)}</td>${cells}<td><b>${tot}</b> / ${ss.length*max}</td><td>${n?Math.round(tot/(ss.length*max)*100)+'%':'-'}</td></tr>`};
+ return `<div class="bar">${bar}</div><p style="color:var(--mut)">${mTest} is out of ${max} marks per subject. Marks save when you leave a box.</p><div class="scroll"><table class="t" style="min-width:760px"><tr><th>Student</th>${subs.map(x=>`<th>${x}</th>`).join('')}<th>Total</th><th>%</th></tr>${r.length?r.map(row).join(''):`<tr><td colspan="${subs.length+3}" class="empty">No students in Class ${mCls}. Add students in the Students tab.</td></tr>`}</table></div>`}
+function setMark(sid,sub,v,max){const i=db.marks.findIndex(m=>m.sid===sid&&m.test===mTest&&m.subject===sub);if(v===''){if(i>-1)db.marks.splice(i,1)}else{const n=Math.min(max,Math.max(0,+v));if(i>-1)db.marks[i].score=n;else db.marks.push({id:uid(),sid,test:mTest,subject:sub,score:n})}save();render();toast('Marks saved')}
+function openDlg(h){$('#dform').innerHTML=h;if(!$('#dlg').open)$('#dlg').showModal()}
+load();
+const ready=initStore().then(()=>{const h=$('#hint');if(h)h.style.display=getAuth()?'none':'';if(logged){render();checkRemind()}});
+try{if(sessionStorage.getItem(SESS)){logged=true;enter()}}catch(_){}
+</script>
+</body>
+</html>
